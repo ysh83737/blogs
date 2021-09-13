@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.json", // 基础依赖配置
+  "compilerOptions": {
+    "outDir": "../../dist/projectB",
+  },
+  "references": [
+    { "path": "../common" } // 引用公共模块
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "extends": "../../tsconfig.json", // 基础依赖配置
+  "compilerOptions": {
+    "outDir": "../../dist/common",
+  }
+}
