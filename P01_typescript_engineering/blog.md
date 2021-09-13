@@ -1,5 +1,8 @@
 Typescript工程化
 ===
+博客：
+- 掘金：https://juejin.cn/post/7007260822736994340/  
+
 # 1. 模块系统
 工程化意味着模块化，简单了解几个JavaScript语言模块系统
 ## (1) ES6(ESM)
