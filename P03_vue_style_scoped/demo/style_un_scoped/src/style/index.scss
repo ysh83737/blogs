@@ -1,0 +1,23 @@
+.component-class {
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: left;
+  color: dimgrey;
+  .component-title {
+    font-weight: 700;
+    font-size: 34px;
+    text-align: center;
+    color: coral;
+  }
+}
+.weak-text {
+  color: darkgrey;
+}
+.dotted-list {
+  list-style-type: circle;
+  .dotted-list-item {
+    color: burlywood;
+  }
+}
