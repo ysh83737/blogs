@@ -90,6 +90,24 @@ const scopedPlugin: PluginCreator<string> = (id = '') => {
 }
 ```
 ## 5 构建编译产物
+### 5.1 测试项目说明
+- 使用vite创建一个空白项目
+- 删除`src/components/HelloWorld.vue`组件
+- 创建2个组件`ComponentA`和`ComponentB`，组件内容一样，插入`App.vue`中
+- 创建公共样式`src/style/index.scss`
+```
+// 项目目录结构
+src
+├── App.vue
+├── assets
+├── components
+│   ├── ComponentA.vue
+│   └── ComponentB.vue
+├── main.js
+└── style
+    └── index.scss
+```
+### 5.2 \<style scoped>编译结果
 经过以上分析，我们已经理解`<style scoped>`需要经过postcss编译，最终产出原生css代码。  
 那么多个scoped组件，复用同一套样式的，会发生什么？
 ***
@@ -231,4 +249,42 @@ export function render(_ctx, _cache) {
 可以看到，同一套css源代码，被分别编译为2套css产物。增加了项目产物包的体积。  
 构建后的vue模板，因为所有dom插入`data-v-scopdeId`，同样也会引发产物包体积增加。
 
-[CSS选择器性能分析](https://www.cnblogs.com/jesse131/p/6135773.html)
+### 5.3 实测对比
+2个组件都使用`<style lang="scss" scoped>`时，构建产物：
+```
+dist/assets/logo.03d6d6da.png    6.69 KiB
+dist/index.html                  0.50 KiB
+dist/assets/index.855c5225.js    4.36 KiB
+dist/assets/index.485f379b.css   0.94 KiB
+dist/assets/vendor.ed7c249f.js   49.57 KiB
+```
+对照组，去除scoped，2个组件都使用`<style lang="scss">`时，构建产物：
+```
+dist/assets/logo.03d6d6da.png    6.69 KiB
+dist/index.html                  0.50 KiB
+dist/assets/index.ff4c35e3.js    4.02 KiB
+dist/assets/index.e35963bf.css   0.47 KiB
+dist/assets/vendor.ed7c249f.js   49.57 KiB
+```
+- js产物体积scoped是unScoped的108%
+- css产物体积scoped是unScoped的200%
+## 6 优缺点分析
+### 6.1 优点
+- 实现css模块化，较好地解决了样式污染问题
+### 6.2 缺点
+- 增加构建产物的体积
+- 修改子组件样式需要使用深度选择器，增加额外的复杂度
+- 添加属性选择器，使CSS选择器的权重增加
+- 最重要的是：这样的工具容易产生依赖，scoped的样式隔离能力，让人忽视css的命名问题，忽视如何将css写的更好、更具有复用性。总而言之，减少了思考。
+### 6.3 待考问题
+- 对CSS选择器性能的影响
+
+## 参考文章
+- [[深入探索] VueJS Scoped CSS 实现原理](https://juejin.cn/post/6844903826198102030)
+- [「vue style」 scoped原理，嵌套情况，v-deep原理](https://juejin.cn/post/6982780540919234573)
+- [带你理解scoped、>>>、/deep/、::v-deep的原理](https://juejin.cn/post/7023343999909888037)
+- [从vue-loader源码分析CSS Scoped的实现](https://juejin.cn/post/6844903949900742670)
+- [你知道style加scoped属性的用途和原理吗？](https://zhuanlan.zhihu.com/p/111495177)
+- [CSS选择器性能分析](https://www.cnblogs.com/jesse131/p/6135773.html)
+- [@vue/compiler-sfc](https://github.com/vuejs/core/tree/main/packages/compiler-sfc)
+- [@vitejs/plugin-vue](https://github.com/vitejs/vite/tree/main/packages/plugin-vue)
