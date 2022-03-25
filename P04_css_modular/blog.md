@@ -6,7 +6,13 @@
 在 Javascript 层面上，模块化已经非常成熟。但 CSS 是根据类名去匹配元素的，如果有两个组件使用了一个相同的类名，后者就会把前者的样式给覆盖掉，为了解决样式命名的冲突问题，产生出了 CSS 模块化的概念。
 ### 1.2 CSS模块化
 在 CSS 模块化的探索进程中，产生了一些实践方案：
-#### 1.2.1 BEM 命名规范
+#### 1.2.1 通过规范约束
+CSS命名规范化，也可以认为是“CSS设计模式”的体现，主要是为了使写出来的CSS代码更具工程化特点。
+OOCSS、SMACSS与BEM
+https://blog.csdn.net/u013588178/article/details/49727339
+https://zhuanlan.zhihu.com/p/338786904
+https://blog.csdn.net/xiaobo_666666/article/details/119999798
+
 BEM 的意思就是块（block）、元素（element）、修饰符（modifier）。是由 Yandex 团队提出的一种前端命名方法论。这种巧妙的命名方法让你的 css 类对其他开发者来说更加透明而且更有意义。
 ```css
 /* 块即是通常所说的 Web 应用开发中的组件或模块。每个块在逻辑上和功能上都是相互独立的。 */
