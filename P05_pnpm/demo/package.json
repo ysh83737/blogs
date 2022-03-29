@@ -1,0 +1,6 @@
+{
+  "name": "demo",
+  "dependencies": {
+    "vue": "^3.2.31"
+  }
+}
