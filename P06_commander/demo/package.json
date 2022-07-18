@@ -1,0 +1,12 @@
+{
+  "name": "my-cli",
+  "version": "1.0.0",
+  "bin": {
+    "shawn-cli": "cli.js",
+    "hello": "cli.js",
+    "other-cli": "other-cli.js"
+  },
+  "dependencies": {
+    "commander": "^9.4.0"
+  }
+}
