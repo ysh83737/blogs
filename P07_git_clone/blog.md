@@ -4,7 +4,7 @@
 > 假设我有一个项目，名为：sample-project，拉取地址为：https://gitlab.com/gitlab-tests/sample-project.git
 
 
-# 1. 通过 username + password 拉取代码
+## 1. 通过 username + password 拉取代码
 
 在实际工作中，我经常需要在某个新的环境中调试项目，拉取临时地项目代码。添加新的ssh key，用完还得删除，显得太麻烦。实际上，我们可以通过`username + password`来单次验证并拉取所需代码。可以使用以下几种命令：
 
@@ -28,7 +28,7 @@
   Resolving deltas: 100% (1/1), done.
   ```
 
-# 2. 通过 username + token 拉取代码
+## 2. 通过 username + token 拉取代码
 
 如果账号启用了**双重身份认证（2FA）**，密码就不能使用了，需要用token来代替密码。
 
