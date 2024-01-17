@@ -142,10 +142,18 @@ curl -fsSL https://get.pnpm.io/install.sh | env PNPM_VERSION=7.32.5 sh -
 $ env PNPM_VERSION=7.32.5 sh ~/install.sh
 ```
 
-## Windows环境
+## 其它
+
+### Windows环境
 
 上述示例在Linux/MacOS都通用，在Windows环境也大同小异（我没有测试过），不同的点有：
 
 - 脚本下载地址：`https://get.pnpm.io/install.ps1`
 - 需要替换的软件包地址变量名为`$archiveUrl`，大约在123行
 - 环境变量的设置命令为`$env:PNPM_VERSION=<version>`
+
+### pnpm版本管理
+
+跟Node.js类似，我们在创建新项目时，会倾向于使用新版本的pnpm，以获取最新的特性。因此，我们还需要一个pnpm版本管理工具。[Volta](https://docs.volta.sh/advanced/pnpm) 或许能成为这样一款工具，让我们期待一下。
+
+> 实际上，我已经正在使用Volta来管理项目的Node.js版本了，真的非常好用。
